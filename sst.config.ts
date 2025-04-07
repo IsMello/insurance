@@ -9,13 +9,11 @@ export default $config({
       home: "aws",
     };
   },
+  
   async run() {
-    const api = new sst.aws.ApiGatewayV2("MyApi");
+    const api = new sst.aws.ApiGatewayV2("InsuranceAPI");
     api.route("GET /", {
-      handler: "index.upload",
-    });
-    api.route("GET /latest", {
-      handler: "index.latest",
+      handler: "src/api/handlers/get-quote.handler",
     });
   }
 });

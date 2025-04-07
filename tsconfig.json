@@ -1,1 +1,12 @@
-{}
+{
+    "extends": [
+        "@tsconfig/node18/tsconfig.json",
+        "@tsconfig/strictest/tsconfig.json"
+      ],
+    "compilerOptions": {
+        "strict": true,
+        "lib": ["ES2023", "DOM"],
+      },
+      "include": ["src", "tests"],
+      "exclude": [ "node_modules/"],
+}
