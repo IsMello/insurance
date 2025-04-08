@@ -4,4 +4,4 @@ export const selectQuoteRequestSchema = z.object({
   rateClass: z.string(),
   coveragePeriod: z.string(),
   selectedPremium: z.number(),
-});
+}).strict();
