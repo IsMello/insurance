@@ -25,7 +25,7 @@ Follow these steps to deploy the project:
 ```bash
 git clone <repository-url>
 cd insurance
-
+```
 
 ### 2. Install Dependencies
 After cloning the repository, install the required dependencies by running:
