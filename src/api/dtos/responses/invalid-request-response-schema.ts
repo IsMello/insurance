@@ -10,8 +10,8 @@ export const invalidRequestResponseSchema = z.object({
             z.array(
                 z.object({
                     code: z.string(),
-                    expected: z.string(),
-                    received: z.string(),
+                    expected: z.string().optional(),
+                    received: z.string().optional(),
                     path: z.string().array(),
                     message: z.string(),
                 })
