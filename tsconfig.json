@@ -1,12 +1,12 @@
 {
     "extends": [
-        "@tsconfig/node18/tsconfig.json",
-        "@tsconfig/strictest/tsconfig.json"
+        "@tsconfig/strictest/tsconfig.json",
       ],
     "compilerOptions": {
-        "strict": true,
         "lib": ["ES2023", "DOM"],
+        "esModuleInterop": true,
+        "skipLibCheck": true, 
       },
-      "include": ["src", "tests"],
+      "include": ["src", "tests", "src/api/clients/knex/migrations/20250408140026_create-quotes-tables.ts"],
       "exclude": [ "node_modules/"],
 }

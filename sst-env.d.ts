@@ -9,6 +9,25 @@ declare module "sst" {
       "type": "sst.aws.ApiGatewayV2"
       "url": string
     }
+    "MigrationRunnerFunction": {
+      "name": string
+      "type": "sst.aws.Function"
+    }
+    "QuotesDatabase": {
+      "clusterArn": string
+      "database": string
+      "host": string
+      "password": string
+      "port": number
+      "reader": string
+      "secretArn": string
+      "type": "sst.aws.Aurora"
+      "username": string
+    }
+    "QuotesVpc": {
+      "bastion": string
+      "type": "sst.aws.Vpc"
+    }
   }
 }
 /// <reference path="sst-env.d.ts" />

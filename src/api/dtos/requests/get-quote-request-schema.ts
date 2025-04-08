@@ -16,6 +16,3 @@ export const getDisabilityQuoteRequestSchema = getTermLifeQuoteRequestSchema.ext
     smoker: z.boolean(),
     eliminationPeriod: z.string(),
 }).strict();
-
-export type GetTermLifeQuoteRequestSchema = z.infer<typeof getTermLifeQuoteRequestSchema>;
-export type GetDisabilityQuoteRequestSchema = z.infer<typeof getDisabilityQuoteRequestSchema>;

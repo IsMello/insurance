@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { responseHeadersSchema } from './response-headers-schema';
 
-export const invalidGetQuoteRequestResponseSchema = z.object({
+export const invalidRequestResponseSchema = z.object({
     statusCode: z.number().default(400),
     headers: responseHeadersSchema,
     body: z.object({ 

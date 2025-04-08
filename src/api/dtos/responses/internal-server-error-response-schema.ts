@@ -8,6 +8,3 @@ export const internalServerErrorSchema = z.object({
   body: z.object({message: z.string().default('Internal Server Error')}),
 });
 
-export type InternalServerErrorResponse = z.infer<typeof internalServerErrorSchema>;
-
-export type InternalServerErrorResponseInput = z.input<typeof internalServerErrorSchema>;

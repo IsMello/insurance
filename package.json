@@ -4,7 +4,16 @@
   "description": "small api to provide insurance quotes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:db": "npm run build:migrations && npm run build:seeds",
+    "predeploy": "npm run build:db",
+    "deploy": "sst deploy",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:migrations": "tsc --project tsconfig.migrations.json",
+    "build:seeds": "tsc --project tsconfig.seeds.json",
+    "migrate:make": "NODE_OPTIONS='--loader tsx' npx knex --knexfile src/api/clients/knex/knexfile.ts migrate:make",
+    "migrate:latest": "NODE_OPTIONS='--loader tsx' npx knex --knexfile src/api/clients/knex/knexfile.ts migrate:latest",
+    "seed:run": "NODE_OPTIONS='--loader tsx' npx knex --knexfile src/api/clients/knex/knexfile.ts seed:run",
+    "migrate:rollback": "NODE_OPTIONS='--loader tsx' npx knex --knexfile src/api/clients/knex/knexfile.ts migrate:rollback"
   },
   "repository": {
     "type": "git",
@@ -12,6 +21,7 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.148",
+    "@types/node": "^18.17.16",
     "tsx": "^4.7.0",
     "typescript": "^5.8.3"
   },
@@ -22,9 +32,12 @@
   },
   "homepage": "https://github.com/IsMello/insurance#readme",
   "dependencies": {
-    "@tsconfig/node18": "^18.2.4",
+    "@aws-sdk/client-secrets-manager": "^3.432.0",
     "@tsconfig/strictest": "^2.0.5",
-    "sst": "^3.12.3",
+    "dotenv": "^16.4.7",
+    "knex": "^3.1.0",
+    "mysql2": "^3.14.0",
+    "sst": "^3.13.5",
     "zod": "^3.24.2"
   }
 }

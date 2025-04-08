@@ -12,4 +12,3 @@ export const getQuoteResponseSchema = z.object({
     body: quoteSchema,
 });
 
-export type GetQuoteResponseSchema = z.infer<typeof getQuoteResponseSchema>;

@@ -1,9 +1,9 @@
 import { APIGatewayProxyEventV2} from 'aws-lambda';
 import { apiGatewayHandler } from '../utils/api-gateway-handler';
 import { getTermLifeQuoteRequestSchema, 
-    getDisabilityQuoteRequestSchema, } from '../dtos/requests/get-quote-request-schema';
+        getDisabilityQuoteRequestSchema, } from '../dtos/requests/get-quote-request-schema';
 import { getQuoteResponseSchema }  from '../dtos/responses/get-quote-response-schema';
-import { invalidGetQuoteRequestResponseSchema } from '../dtos/responses/invalid-get-quote-request-response-schema';
+import { invalidRequestResponseSchema } from '../dtos/responses/invalid-request-response-schema';
 import { internalServerErrorSchema } from '../dtos/responses/internal-server-error-response-schema';
 import { quoteNotFoundSchema } from '../dtos/responses/quote-not-found-esponse-schema';
 import { ZodSchema, SafeParseReturnType } from 'zod';
@@ -61,7 +61,7 @@ function returnCorrectQuote(type: InsuranceTypes): Quote {
 export const handler = apiGatewayHandler( async (event: APIGatewayProxyEventV2) => {
     try {
         if (!event.body) {
-            return invalidGetQuoteRequestResponseSchema.parse({
+            return invalidRequestResponseSchema.parse({
                 body: { error: { message: 'Request body is empty.'} },
                 
             })
@@ -77,7 +77,7 @@ export const handler = apiGatewayHandler( async (event: APIGatewayProxyEventV2) 
         const type: InsuranceTypes = parsedBody.productId as InsuranceTypes;
 
         if (!schemaMapping[type]) {
-            return invalidGetQuoteRequestResponseSchema.parse({
+            return invalidRequestResponseSchema.parse({
                 body: { error: { message: `Unknown productId: ${type}`} },
             });
         }
@@ -86,7 +86,7 @@ export const handler = apiGatewayHandler( async (event: APIGatewayProxyEventV2) 
      const requestBodyValidation: SafeParseReturnType<any, any> = schema.safeParse(parsedBody);
 
      if (!requestBodyValidation.success) {
-         return invalidGetQuoteRequestResponseSchema.parse({
+         return invalidRequestResponseSchema.parse({
              body: { error: requestBodyValidation.error.errors },
          });
      }
