@@ -1,6 +1,6 @@
-import { getKnexConfig } from "./environments";
-import { Knex } from "knex";
+import { getKnexConfig } from './environments';
+import { Knex } from 'knex';
 
-const config: Knex.Config = getKnexConfig()
+const config: Knex.Config = getKnexConfig();
 
 export default config;

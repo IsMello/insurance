@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-export const getTermLifeQuoteRequestSchema = z.object({
+export const getTermLifeQuoteRequestSchema = z
+  .object({
     productId: z.string(),
     state: z.string(),
     sex: z.string().max(1),
@@ -9,10 +10,13 @@ export const getTermLifeQuoteRequestSchema = z.object({
     benefitType: z.string(),
     mode: z.string(),
     riders: z.string().array(),
-}).strict();
+  })
+  .strict();
 
-export const getDisabilityQuoteRequestSchema = getTermLifeQuoteRequestSchema.extend({
+export const getDisabilityQuoteRequestSchema = getTermLifeQuoteRequestSchema
+  .extend({
     annualIncome: z.number(),
     smoker: z.boolean(),
     eliminationPeriod: z.string(),
-}).strict();
+  })
+  .strict();

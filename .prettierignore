@@ -1,0 +1,12 @@
+dist/
+coverage/
+.sst/
+jest.config.js
+sst-env.d.ts
+docker-compose.yml
+tsconfig.json
+tsconfig.migrations.json
+tsconfig.seeds.json
+README.md
+package-lock.json
+package.json

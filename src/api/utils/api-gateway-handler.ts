@@ -1,10 +1,13 @@
-import { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
+import {
+  APIGatewayProxyEventV2,
+  APIGatewayProxyStructuredResultV2,
+} from 'aws-lambda';
 
 export const apiGatewayHandler =
-(
-  handler: (event: APIGatewayProxyEventV2) => Promise<any>,
-) =>
-  async (event: APIGatewayProxyEventV2): Promise<APIGatewayProxyStructuredResultV2> => {
+  (handler: (event: APIGatewayProxyEventV2) => Promise<any>) =>
+  async (
+    event: APIGatewayProxyEventV2,
+  ): Promise<APIGatewayProxyStructuredResultV2> => {
     const DEFAULT_HEADERS = {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',

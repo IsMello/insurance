@@ -1,5 +1,5 @@
-import {z} from 'zod';
-    
+import { z } from 'zod';
+
 import { responseHeadersSchema } from './response-headers-schema';
 
 export const internalServerErrorSchema = z.object({
@@ -7,4 +7,3 @@ export const internalServerErrorSchema = z.object({
   headers: responseHeadersSchema,
   body: z.any().default({ message: 'Internal server error' }),
 });
-
