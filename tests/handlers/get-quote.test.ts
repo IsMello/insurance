@@ -2,9 +2,9 @@ import { handler } from '../../src/api/handlers/get-quote';
 import { APIGatewayProxyEventV2 } from 'aws-lambda';
 
 const DEFAULT_HEADERS = {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json',
-  };
+  'Access-Control-Allow-Origin': '*',
+  'Content-Type': 'application/json',
+};
 describe('get-quote handler', () => {
   const mockEvent = (body: any): APIGatewayProxyEventV2 => ({
     body: JSON.stringify(body),
@@ -22,9 +22,9 @@ describe('get-quote handler', () => {
     const response = await handler(event);
     expect(response).toEqual({
       statusCode: 400,
-     headers: DEFAULT_HEADERS,
+      headers: DEFAULT_HEADERS,
       body: JSON.stringify({
-        message: "Invalid request",
+        message: 'Invalid request',
         error: { message: 'Request body is empty.' },
       }),
     });
@@ -44,7 +44,10 @@ describe('get-quote handler', () => {
   });
 
   it('should return an error for an invalid request schema', async () => {
-    const event = mockEvent({ productId: 'term-life', invalidField: 'invalid' });
+    const event = mockEvent({
+      productId: 'term-life',
+      invalidField: 'invalid',
+    });
     const response = await handler(event);
     expect(response.statusCode).toBe(400);
     const body = JSON.parse(response.body as string);
@@ -52,15 +55,15 @@ describe('get-quote handler', () => {
   });
 
   it('should return a valid quote for term-life', async () => {
-    const event = mockEvent({ 
-        productId: 'term-life', 
-        state: "PA",
-        sex: "M",
-        dateOfBirth: "1970-01-01",
-        amount: 25000000,
-        benefitType: "LS",
-        mode: "M",
-        riders: ["child", "chronic"]
+    const event = mockEvent({
+      productId: 'term-life',
+      state: 'PA',
+      sex: 'M',
+      dateOfBirth: '1970-01-01',
+      amount: 25000000,
+      benefitType: 'LS',
+      mode: 'M',
+      riders: ['child', 'chronic'],
     });
     const response = await handler(event);
     expect(response).toEqual({
@@ -88,19 +91,19 @@ describe('get-quote handler', () => {
   });
 
   it('should return a valid quote for disability', async () => {
-    const event = mockEvent({ 
-        productId: 'disability', 
-        state: "PA",
-        sex: "M",
-        dateOfBirth: "1970-01-01",
-        amount: 25000000,
-        benefitType: "LS",
-        mode: "M",
-        riders: ["child", "chronic"],
-        annualIncome: 10000000,
-        smoker: false,
-        eliminationPeriod: "90"
-        });
+    const event = mockEvent({
+      productId: 'disability',
+      state: 'PA',
+      sex: 'M',
+      dateOfBirth: '1970-01-01',
+      amount: 25000000,
+      benefitType: 'LS',
+      mode: 'M',
+      riders: ['child', 'chronic'],
+      annualIncome: 10000000,
+      smoker: false,
+      eliminationPeriod: '90',
+    });
     const response = await handler(event);
     expect(response).toEqual({
       statusCode: 200,

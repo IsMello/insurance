@@ -16,4 +16,3 @@ module.exports = {
     '^.+\\.ts$': '@swc/jest',
   },
 };
-
